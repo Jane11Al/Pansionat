@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp">
+	<Dictionary>
+		<MsSqlDataConnection Name="Connection" ConnectionString="ваша_строка_подключения">
+			<TableDataSource Name="Воспитанник" DataType="System.Int32" Enabled="true" SelectCommand="SELECT 
+                    Номер_личного_дела_воспитанника,
+                    ФИО, 
+                    CONVERT(varchar, Дата_рождения, 104) as Дата_рождения,
+                    Пол,
+                    Основной_диагноз
+                 FROM Воспитанник"/>
+		</MsSqlDataConnection>
+		<Parameter Name="TotalCount" DataType="System.Int32"/>
+	</Dictionary>
+	
+	<ReportPage Name="Page1">
+		<ReportTitleBand Name="ReportTitle1" Width="718.2" Height="94.5">
+			<TextObject Name="Text1" Top="10" Width="718.2" Height="37.8"
+						Text="СПИСОК ВОСПИТАННИКОВ"
+						HorzAlign="Center"
+						Font="Arial, 16pt, style=Bold"/>
+
+			<TextObject Name="Text14" Top="47.25" Width="718.2" Height="28.35"
+						Text="Дата формирования: [Date]"
+						HorzAlign="Center"
+						Font="Arial, 10pt"/>
+		</ReportTitleBand>
+		<PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="28.35">
+			<TextObject Name="Text2" Width="100" Height="28.35" Border.Lines="All" Text="Номер дела" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text3" Left="100" Width="250" Height="28.35" Border.Lines="All" Text="ФИО" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text4" Left="350" Width="120" Height="28.35" Border.Lines="All" Text="Дата рождения" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text5" Left="470" Width="80" Height="28.35" Border.Lines="All" Text="Пол" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text9" Left="550" Width="168.2" Height="28.35" Border.Lines="All" Text="Диагноз" HorzAlign="Center" VertAlign="Center"/>
+		</PageHeaderBand>
+
+		<DataBand Name="Data1" Top="111.95" Width="718.2" Height="28.35" DataSource="Воспитанник">
+			<TextObject Name="Text6" Width="100" Height="28.35" Border.Lines="All" Text="[Воспитанник.Номер_личного_дела_воспитанника]" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text7" Left="100" Width="250" Height="28.35" Border.Lines="All" Text="[Воспитанник.ФИО]" VertAlign="Center"/>
+			<TextObject Name="Text10" Left="350" Width="120" Height="28.35" Border.Lines="All" Text="[Воспитанник.Дата_рождения]" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text11" Left="470" Width="80" Height="28.35" Border.Lines="All" Text="[Воспитанник.Пол]" HorzAlign="Center" VertAlign="Center"/>
+			<TextObject Name="Text12" Left="550" Width="168.2" Height="28.35" Border.Lines="All" Text="[Воспитанник.Основной_диагноз]" VertAlign="Center"/>
+		</DataBand>
+
+		<ReportSummaryBand Name="ReportSummary1" Top="144.3" Width="718.2" Height="37.8">
+			<TextObject Name="Text13" Left="470" Top="9.45" Width="248.2" Height="18.9" Text="Всего записей: [TotalCount]" HorzAlign="Right" Font="Arial, 10pt, style=Bold"/>
+		</ReportSummaryBand>
+	</ReportPage>
+</Report>
