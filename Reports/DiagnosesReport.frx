@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/01/2023 00:00:00" ReportInfo.Modified="01/01/2023 00:00:00">
+	<Dictionary>
+		<TableDataSource Name="Диагноз" ReferenceName="Data.Диагноз" DataType="System.Int32" Enabled="true">
+			<Column Name="Код_заболевания" DataType="System.Int32"/>
+			<Column Name="Название" DataType="System.String"/>
+		</TableDataSource>
+		<Parameter Name="TotalCount" DataType="System.Int32"/>
+		<Parameter Name="ReportDate" DataType="System.String"/>
+	</Dictionary>
+	<ReportPage Name="Page1">
+		<ReportTitleBand Name="ReportTitle1" Width="718.2" Height="75.6">
+			<TextObject Name="Text1" Left="189" Top="18.9" Width="340.2" Height="37.8" Text="СПРАВОЧНИК ДИАГНОЗОВ" HorzAlign="Center" Font="Arial, 16pt, style=Bold"/>
+		</ReportTitleBand>
+		<PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="28.35">
+			<TextObject Name="Text3" Width="113.4" Height="18.9" Text="Код заболевания" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text5" Left="113.4" Width="604.8" Height="18.9" Text="Название диагноза" Font="Arial, 10pt, style=Bold"/>
+		</PageHeaderBand>
+		<DataBand Name="Data1" Top="111.95" Width="718.2" Height="18.9" DataSource="Диагноз">
+			<TextObject Name="Text2" Width="113.4" Height="18.9" Text="[Диагноз.Код_заболевания]" Font="Arial, 10pt"/>
+			<TextObject Name="Text4" Left="113.4" Width="604.8" Height="18.9" Text="[Диагноз.Название]" Font="Arial, 10pt"/>
+		</DataBand>
+		<ReportSummaryBand Name="ReportSummary1" Top="134.85" Width="718.2" Height="75.6">
+			<TextObject Name="Text6" Top="18.9" Width="718.2" Height="18.9" Text="Всего диагнозов: [TotalCount]" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text7" Top="37.8" Width="718.2" Height="18.9" Text="Дата формирования: [ReportDate]" Font="Arial, 10pt"/>
+		</ReportSummaryBand>
+	</ReportPage>
+</Report>

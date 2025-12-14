@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/01/2023 00:00:00" ReportInfo.Modified="01/01/2023 00:00:00">
+	<Dictionary>
+		<TableDataSource Name="Препараты" ReferenceName="Data.Препараты" DataType="System.Int32" Enabled="true">
+			<Column Name="Название_препарата" DataType="System.String"/>
+			<Column Name="Дозировка_в_мг" DataType="System.String"/>
+		</TableDataSource>
+		<Parameter Name="TotalCount" DataType="System.Int32"/>
+		<Parameter Name="ReportDate" DataType="System.String"/>
+	</Dictionary>
+	<ReportPage Name="Page1">
+		<ReportTitleBand Name="ReportTitle1" Width="718.2" Height="75.6">
+			<TextObject Name="Text1" Left="189" Top="18.9" Width="340.2" Height="37.8" Text="СПРАВОЧНИК ПРЕПАРАТОВ" HorzAlign="Center" Font="Arial, 16pt, style=Bold"/>
+		</ReportTitleBand>
+		<PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="28.35">
+			<TextObject Name="Text3" Width="378" Height="18.9" Text="Название препарата" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text5" Left="378" Width="340.2" Height="18.9" Text="Дозировка (мг)" Font="Arial, 10pt, style=Bold"/>
+		</PageHeaderBand>
+		<DataBand Name="Data1" Top="111.95" Width="718.2" Height="18.9" DataSource="Препараты">
+			<TextObject Name="Text2" Width="378" Height="18.9" Text="[Препараты.Название_препарата]" Font="Arial, 10pt"/>
+			<TextObject Name="Text4" Left="378" Width="340.2" Height="18.9" Text="[Препараты.Дозировка_в_мг]" Font="Arial, 10pt"/>
+		</DataBand>
+		<ReportSummaryBand Name="ReportSummary1" Top="134.85" Width="718.2" Height="75.6">
+			<TextObject Name="Text6" Top="18.9" Width="718.2" Height="18.9" Text="Всего препаратов: [TotalCount]" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text7" Top="37.8" Width="718.2" Height="18.9" Text="Дата формирования: [ReportDate]" Font="Arial, 10pt"/>
+		</ReportSummaryBand>
+	</ReportPage>
+</Report>

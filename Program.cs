@@ -20,7 +20,8 @@ namespace Pansionat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RealTimeDataForm());
+            //Application.Run(new _2_RealTimeDataForm());
+            Application.Run(new Form2());
 
         }
     }

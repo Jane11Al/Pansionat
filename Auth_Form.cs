@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pasionat;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Pansionat
 {
@@ -48,6 +50,13 @@ namespace Pansionat
         private void progToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            _2_RealTimeDataForm mainForm = new _2_RealTimeDataForm();
+            mainForm.ShowDialog();
+            this.Close();
         }
     }
 }

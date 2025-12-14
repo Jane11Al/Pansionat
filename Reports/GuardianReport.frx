@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/01/2023 00:00:00" ReportInfo.Modified="01/01/2023 00:00:00">
+	<Dictionary>
+		<TableDataSource Name="Опекуны" ReferenceName="Data.Опекуны" DataType="System.Int32" Enabled="true">
+			<Column Name="ФИО_опекуна" DataType="System.String"/>
+			<Column Name="Контактная_информация" DataType="System.String"/>
+			<Column Name="Адрес" DataType="System.String"/>
+			<Column Name="Пол" DataType="System.String"/>
+			<Column Name="Дата_рождения" DataType="System.DateTime"/>
+		</TableDataSource>
+		<Parameter Name="TotalCount" DataType="System.Int32"/>
+		<Parameter Name="ReportDate" DataType="System.String"/>
+	</Dictionary>
+	<ReportPage Name="Page1">
+		<ReportTitleBand Name="ReportTitle1" Width="718.2" Height="75.6">
+			<TextObject Name="Text1" Left="189" Top="18.9" Width="340.2" Height="37.8" Text="СПРАВОЧНИК ОПЕКУНОВ" HorzAlign="Center" Font="Arial, 16pt, style=Bold"/>
+		</ReportTitleBand>
+		<PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="28.35">
+			<TextObject Name="Text3" Width="151.2" Height="18.9" Text="ФИО опекуна" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text5" Left="151.2" Width="132.3" Height="18.9" Text="Контактная информация" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text7" Left="283.5" Width="151.2" Height="18.9" Text="Адрес" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text9" Left="434.7" Width="56.7" Height="18.9" Text="Пол" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text11" Left="491.4" Width="113.4" Height="18.9" Text="Дата рождения" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text13" Left="604.8" Width="113.4" Height="18.9" Text="Возраст" Font="Arial, 10pt, style=Bold"/>
+		</PageHeaderBand>
+		<DataBand Name="Data1" Top="111.95" Width="718.2" Height="18.9" DataSource="Опекуны">
+			<TextObject Name="Text2" Width="151.2" Height="18.9" Text="[Опекуны.ФИО_опекуна]" Font="Arial, 10pt"/>
+			<TextObject Name="Text4" Left="151.2" Width="132.3" Height="18.9" Text="[Опекуны.Контактная_информация]" Font="Arial, 10pt"/>
+			<TextObject Name="Text6" Left="283.5" Width="151.2" Height="18.9" Text="[Опекуны.Адрес]" Font="Arial, 10pt"/>
+			<TextObject Name="Text8" Left="434.7" Width="56.7" Height="18.9" Text="[Опекуны.Пол]" Font="Arial, 10pt"/>
+			<TextObject Name="Text10" Left="491.4" Width="113.4" Height="18.9" Text="[Опекуны.Дата_рождения]" Format="Date" Format.Format="d" Font="Arial, 10pt"/>
+			<TextObject Name="Text12" Left="604.8" Width="113.4" Height="18.9" Text="[IIf([Опекуны.Дата_рождения] == null, &quot;&quot;, (DateTime.Now.Year - [Опекуны.Дата_рождения].Year).ToString())]" Font="Arial, 10pt"/>
+		</DataBand>
+		<ReportSummaryBand Name="ReportSummary1" Top="134.85" Width="718.2" Height="75.6">
+			<TextObject Name="Text14" Top="18.9" Width="718.2" Height="18.9" Text="Всего опекунов: [TotalCount]" Font="Arial, 10pt, style=Bold"/>
+			<TextObject Name="Text15" Top="37.8" Width="718.2" Height="18.9" Text="Дата формирования: [ReportDate]" Font="Arial, 10pt"/>
+		</ReportSummaryBand>
+	</ReportPage>
+</Report>

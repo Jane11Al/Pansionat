@@ -17,13 +17,15 @@ using System.IO;
 using Pasionat;
 using FastReport.Preview;
 
+
 namespace Pansionat
 {
-   
-    public partial class RealTimeDataForm : Form
+    
+
+    public partial class _2_RealTimeDataForm : Form
     {
         private DatabaseHelper dbHelper;
-        public RealTimeDataForm()
+        public _2_RealTimeDataForm()
         {
             InitializeComponent();
             dbHelper = new DatabaseHelper();
@@ -53,71 +55,13 @@ namespace Pansionat
             }
         }
 
-
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void RealTimeDataForm_Load(object sender, EventArgs e)
         {
 
             //this.reportViewer1.RefreshReport();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtFIO.Text))
             {
@@ -169,8 +113,6 @@ namespace Pansionat
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
-
-
         }
         private string GetFriendlyErrorMessage(SqlException ex)
         {
@@ -186,7 +128,7 @@ namespace Pansionat
                     return ex.Message;
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
 
             try
@@ -252,7 +194,7 @@ namespace Pansionat
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -281,47 +223,6 @@ namespace Pansionat
                 MessageBox.Show("Ошибка загрузки данных: " + ex.Message);
             }
         }
-
-        /*private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Проверка выбранной строки
-                if (dataGridViewStudents.SelectedRows.Count == 0)
-                {
-                    MessageBox.Show("Выберите запись для сохранения!");
-                    return;
-                }
-
-                // Проверка обязательных полей
-                if (string.IsNullOrEmpty(txtFIO.Text) || comboBoxGender.SelectedItem == null)
-                {
-                    MessageBox.Show("Заполните обязательные поля (ФИО, Пол)!");
-                    return;
-                }
-
-                // Получение номера дела из выделенной строки
-                DataGridViewRow selectedRow = dataGridViewStudents.SelectedRows[0];
-                int currentNumber = Convert.ToInt32(selectedRow.Cells["Номер_личного_дела_воспитанника"].Value);
-                
-                // Обновление данных в БД
-                dbHelper.UpdateStudent(
-                    currentNumber,
-                    txtFIO.Text,
-                    dateTimePickerBirthDate.Value,
-                    comboBoxGender.SelectedItem.ToString(),
-                    txtDiagnosis.Text
-                );
-                LoadStudentsData();
-                MessageBox.Show("Изменения сохранены!");
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка: " + ex.Message);
-            }
-        }
-*/
         private void button3_Click(object sender, EventArgs e)
         {
             try
@@ -428,11 +329,77 @@ namespace Pansionat
                 MessageBox.Show($"Ошибка формирования отчёта: {ex.Message}");
             }
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            groupBox2.Visible = true;
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e) //пред область
+        { 
+
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e) //мед оборудование
+        {
+
+
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e) //педагоги
+        {
+
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e) //опекуны воспитанника
+        {
+
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
     public class DatabaseHelper
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["PansionatDBConnection"].ConnectionString;
-        
+
         public DataTable LoadStudents()
         {
             DataTable dt = new DataTable();
