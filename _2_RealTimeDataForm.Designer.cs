@@ -43,16 +43,19 @@
             this.progToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.информацияОбОбученииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.инфорацияОЛеченииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.штукиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.названияОтчетовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxDiagnosis = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.txtFIO = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxEquipment = new System.Windows.Forms.ComboBox();
             this.comboBoxGuardian = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,11 +66,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.запросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.штукиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.названияОтчетовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -197,17 +195,50 @@
             this.инфорацияОЛеченииToolStripMenuItem.Text = "Инфорация о состоянии здоровья";
             this.инфорацияОЛеченииToolStripMenuItem.Click += new System.EventHandler(this.инфорацияОЛеченииToolStripMenuItem_Click);
             // 
+            // запросыToolStripMenuItem
+            // 
+            this.запросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem,
+            this.штукиToolStripMenuItem});
+            this.запросыToolStripMenuItem.Name = "запросыToolStripMenuItem";
+            this.запросыToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.запросыToolStripMenuItem.Text = "Запросы";
+            // 
+            // подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem
+            // 
+            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem.Name = "подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem";
+            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem.Size = new System.Drawing.Size(421, 26);
+            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem.Text = "Подумать какие основные запросы - названия";
+            // 
+            // штукиToolStripMenuItem
+            // 
+            this.штукиToolStripMenuItem.Name = "штукиToolStripMenuItem";
+            this.штукиToolStripMenuItem.Size = new System.Drawing.Size(421, 26);
+            this.штукиToolStripMenuItem.Text = "3 штуки";
+            // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.названияОтчетовToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // названияОтчетовToolStripMenuItem
+            // 
+            this.названияОтчетовToolStripMenuItem.Name = "названияОтчетовToolStripMenuItem";
+            this.названияОтчетовToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.названияОтчетовToolStripMenuItem.Text = "Названия отчетов";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.comboBoxDiagnosis);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.dateTimePickerBirthDate);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.dataGridViewStudents);
             this.groupBox2.Controls.Add(this.txtFIO);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.comboBoxEquipment);
             this.groupBox2.Controls.Add(this.comboBoxGuardian);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
@@ -267,16 +298,6 @@
             this.label19.TabIndex = 81;
             this.label19.Text = "Дата рождения:";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(173, 619);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(191, 25);
-            this.label5.TabIndex = 80;
-            this.label5.Text = "Мед оборудование:";
-            // 
             // dataGridViewStudents
             // 
             this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -305,19 +326,6 @@
             this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 77;
             this.label1.Text = "ФИО ";
-            // 
-            // comboBoxEquipment
-            // 
-            this.comboBoxEquipment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEquipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxEquipment.FormattingEnabled = true;
-            this.comboBoxEquipment.Items.AddRange(new object[] {
-            "м",
-            "ж"});
-            this.comboBoxEquipment.Location = new System.Drawing.Point(384, 611);
-            this.comboBoxEquipment.Name = "comboBoxEquipment";
-            this.comboBoxEquipment.Size = new System.Drawing.Size(308, 33);
-            this.comboBoxEquipment.TabIndex = 76;
             // 
             // comboBoxGuardian
             // 
@@ -424,41 +432,6 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // запросыToolStripMenuItem
-            // 
-            this.запросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem,
-            this.штукиToolStripMenuItem});
-            this.запросыToolStripMenuItem.Name = "запросыToolStripMenuItem";
-            this.запросыToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
-            this.запросыToolStripMenuItem.Text = "Запросы";
-            // 
-            // подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem
-            // 
-            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem.Name = "подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem";
-            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem.Size = new System.Drawing.Size(421, 26);
-            this.подуматьКакиеОсновныеЗапросыНазванияToolStripMenuItem.Text = "Подумать какие основные запросы - названия";
-            // 
-            // штукиToolStripMenuItem
-            // 
-            this.штукиToolStripMenuItem.Name = "штукиToolStripMenuItem";
-            this.штукиToolStripMenuItem.Size = new System.Drawing.Size(421, 26);
-            this.штукиToolStripMenuItem.Text = "3 штуки";
-            // 
-            // отчетыToolStripMenuItem
-            // 
-            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.названияОтчетовToolStripMenuItem});
-            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
-            this.отчетыToolStripMenuItem.Text = "Отчеты";
-            // 
-            // названияОтчетовToolStripMenuItem
-            // 
-            this.названияОтчетовToolStripMenuItem.Name = "названияОтчетовToolStripMenuItem";
-            this.названияОтчетовToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.названияОтчетовToolStripMenuItem.Text = "Названия отчетов";
-            // 
             // _2_RealTimeDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -499,11 +472,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthDate;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridViewStudents;
         private System.Windows.Forms.TextBox txtFIO;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxEquipment;
         private System.Windows.Forms.ComboBox comboBoxGuardian;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;

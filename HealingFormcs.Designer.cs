@@ -75,7 +75,6 @@
             this.buttonAttachEquipment = new System.Windows.Forms.Button();
             this.dataGridViewEquipment = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.buttonDeleteAppointment = new System.Windows.Forms.Button();
             this.buttonAddAppointment = new System.Windows.Forms.Button();
             this.textBoxAppointmentCode = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -574,7 +573,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.buttonDeleteAppointment);
             this.tabPage4.Controls.Add(this.buttonAddAppointment);
             this.tabPage4.Controls.Add(this.textBoxAppointmentCode);
             this.tabPage4.Controls.Add(this.label12);
@@ -590,16 +588,6 @@
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Назначения воспитанника";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteAppointment
-            // 
-            this.buttonDeleteAppointment.Location = new System.Drawing.Point(977, 418);
-            this.buttonDeleteAppointment.Name = "buttonDeleteAppointment";
-            this.buttonDeleteAppointment.Size = new System.Drawing.Size(172, 44);
-            this.buttonDeleteAppointment.TabIndex = 115;
-            this.buttonDeleteAppointment.Text = "Удалить (?) нужно ли";
-            this.buttonDeleteAppointment.UseVisualStyleBackColor = true;
-            this.buttonDeleteAppointment.Click += new System.EventHandler(this.buttonDeleteAppointment_Click);
             // 
             // buttonAddAppointment
             // 
@@ -783,7 +771,6 @@
         private System.Windows.Forms.Button buttonAddDiagnosis;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonDeleteDiagnosis;
-        private System.Windows.Forms.Button buttonDeleteAppointment;
         private System.Windows.Forms.Button buttonAddAppointment;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

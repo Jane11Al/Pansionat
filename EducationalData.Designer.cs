@@ -30,9 +30,7 @@
         {
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonPick = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -46,7 +44,6 @@
             this.comboBoxYear = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.buttonPick = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.labelFIO = new System.Windows.Forms.Label();
@@ -57,6 +54,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.labelFIO1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,9 +64,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxYear2 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.labelFIO1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEducation)).BeginInit();
@@ -87,9 +84,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.buttonRefresh);
-            this.tabPage1.Controls.Add(this.buttonSearch);
-            this.tabPage1.Controls.Add(this.textBoxSearch);
+            this.tabPage1.Controls.Add(this.buttonPick);
             this.tabPage1.Controls.Add(this.buttonEdit);
             this.tabPage1.Controls.Add(this.buttonSave);
             this.tabPage1.Controls.Add(this.buttonDelete);
@@ -103,7 +98,6 @@
             this.tabPage1.Controls.Add(this.comboBoxYear);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.buttonPick);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -112,34 +106,15 @@
             this.tabPage1.Text = "Обучение воспитанника по программам";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // buttonRefresh
+            // buttonPick
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(1349, 538);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(128, 49);
-            this.buttonRefresh.TabIndex = 75;
-            this.buttonRefresh.Text = "Обновить данные";
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(1213, 189);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(128, 50);
-            this.buttonSearch.TabIndex = 72;
-            this.buttonSearch.Text = "Поиск по ФИО воспитанника";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // textBoxSearch
-            // 
-            this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSearch.Location = new System.Drawing.Point(851, 196);
-            this.textBoxSearch.Multiline = true;
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(356, 32);
-            this.textBoxSearch.TabIndex = 71;
+            this.buttonPick.Location = new System.Drawing.Point(1288, 204);
+            this.buttonPick.Name = "buttonPick";
+            this.buttonPick.Size = new System.Drawing.Size(172, 44);
+            this.buttonPick.TabIndex = 67;
+            this.buttonPick.Text = "Выбрать";
+            this.buttonPick.UseVisualStyleBackColor = true;
+            this.buttonPick.Click += new System.EventHandler(this.buttonPick_Click);
             // 
             // buttonEdit
             // 
@@ -210,7 +185,7 @@
             this.dataGridViewEducation.Name = "dataGridViewEducation";
             this.dataGridViewEducation.RowHeadersWidth = 51;
             this.dataGridViewEducation.RowTemplate.Height = 24;
-            this.dataGridViewEducation.Size = new System.Drawing.Size(1300, 362);
+            this.dataGridViewEducation.Size = new System.Drawing.Size(1443, 362);
             this.dataGridViewEducation.TabIndex = 29;
             // 
             // comboBoxProgram
@@ -272,16 +247,6 @@
             this.label3.Size = new System.Drawing.Size(144, 25);
             this.label3.TabIndex = 53;
             this.label3.Text = "Год обучения:";
-            // 
-            // buttonPick
-            // 
-            this.buttonPick.Location = new System.Drawing.Point(1349, 593);
-            this.buttonPick.Name = "buttonPick";
-            this.buttonPick.Size = new System.Drawing.Size(128, 44);
-            this.buttonPick.TabIndex = 46;
-            this.buttonPick.Text = "Выбрать";
-            this.buttonPick.UseVisualStyleBackColor = true;
-            this.buttonPick.Click += new System.EventHandler(this.buttonPick_Click);
             // 
             // tabPage2
             // 
@@ -394,12 +359,42 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1495, 665);
             this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Результаты обучения в учебном году (?)";
+            this.tabPage3.Text = "Результаты обучения в учебном году";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox5.Location = new System.Drawing.Point(736, 180);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox5.Size = new System.Drawing.Size(743, 465);
+            this.textBox5.TabIndex = 76;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(767, 137);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(259, 25);
+            this.label10.TabIndex = 75;
+            this.label10.Text = "Предметные результаты:";
+            // 
+            // labelFIO1
+            // 
+            this.labelFIO1.AutoSize = true;
+            this.labelFIO1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFIO1.Location = new System.Drawing.Point(60, 18);
+            this.labelFIO1.Name = "labelFIO1";
+            this.labelFIO1.Size = new System.Drawing.Size(138, 25);
+            this.labelFIO1.TabIndex = 74;
+            this.labelFIO1.Text = "ФИО ученика";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1307, 572);
+            this.button1.Location = new System.Drawing.Point(1314, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(154, 53);
             this.button1.TabIndex = 73;
@@ -409,21 +404,22 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(34, 396);
+            this.textBox1.Location = new System.Drawing.Point(35, 450);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(659, 148);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(659, 195);
             this.textBox1.TabIndex = 72;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(38, 353);
+            this.label7.Location = new System.Drawing.Point(38, 406);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(323, 25);
+            this.label7.Size = new System.Drawing.Size(252, 25);
             this.label7.TabIndex = 71;
-            this.label7.Text = "Описание результатов обучения:";
+            this.label7.Text = "Личностные результаты:";
             // 
             // textBox4
             // 
@@ -431,7 +427,8 @@
             this.textBox4.Location = new System.Drawing.Point(34, 180);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(660, 146);
+            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox4.Size = new System.Drawing.Size(660, 223);
             this.textBox4.TabIndex = 70;
             // 
             // label8
@@ -440,9 +437,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(38, 137);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 25);
+            this.label8.Size = new System.Drawing.Size(388, 25);
             this.label8.TabIndex = 69;
-            this.label8.Text = "Виды:";
+            this.label8.Text = "Результаты базовых учебных действий:";
             // 
             // comboBoxYear2
             // 
@@ -463,35 +460,6 @@
             this.label9.Size = new System.Drawing.Size(144, 25);
             this.label9.TabIndex = 67;
             this.label9.Text = "Год обучения:";
-            // 
-            // labelFIO1
-            // 
-            this.labelFIO1.AutoSize = true;
-            this.labelFIO1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFIO1.Location = new System.Drawing.Point(60, 18);
-            this.labelFIO1.Name = "labelFIO1";
-            this.labelFIO1.Size = new System.Drawing.Size(138, 25);
-            this.labelFIO1.TabIndex = 74;
-            this.labelFIO1.Text = "ФИО ученика";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(761, 283);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(659, 148);
-            this.textBox5.TabIndex = 76;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(765, 240);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(323, 25);
-            this.label10.TabIndex = 75;
-            this.label10.Text = "Описание результатов обучения:";
             // 
             // EducationalData
             // 
@@ -532,7 +500,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridViewEducation;
-        private System.Windows.Forms.Button buttonPick;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxStudent;
         private System.Windows.Forms.Button button3;
@@ -541,9 +508,6 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.TextBox textBoxSearch;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label10;
@@ -555,5 +519,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxYear2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonPick;
     }
 }

@@ -24,7 +24,8 @@ namespace Pansionat
         private DatabaseHelper dbHelper;
         private DataTable diagnosesData;
         private DataTable guardiansData;
-        private DataTable equipmentData;
+
+        // Убран equipmentData
 
         public _2_RealTimeDataForm()
         {
@@ -53,12 +54,7 @@ namespace Pansionat
                 comboBoxGuardian.ValueMember = "ФИО_опекуна";
                 comboBoxGuardian.SelectedIndex = -1;
 
-                // Загрузка мед оборудования
-                equipmentData = dbHelper.LoadMedicalEquipment();
-                comboBoxEquipment.DataSource = equipmentData;
-                comboBoxEquipment.DisplayMember = "Название";
-                comboBoxEquipment.ValueMember = "Инвентарный_номер_оборудования";
-                comboBoxEquipment.SelectedIndex = -1;
+                // Убрана загрузка мед оборудования
             }
             catch (Exception ex)
             {
@@ -117,11 +113,7 @@ namespace Pansionat
                 MessageBox.Show("Выберите опекуна!");
                 return;
             }
-            if (comboBoxEquipment.SelectedValue == null)
-            {
-                MessageBox.Show("Выберите мед оборудование!");
-                return;
-            }
+            // Убрана проверка мед оборудования
             if (!int.TryParse(txtNumb.Text, out int number))
             {
                 MessageBox.Show("Номер должен быть целым числом!");
@@ -136,8 +128,8 @@ namespace Pansionat
                     birthDate: dateTimePickerBirthDate.Value,
                     gender: comboBoxGender.SelectedItem.ToString(),
                     diagnosisId: comboBoxDiagnosis.SelectedValue.ToString(), // Изменено на string
-                    guardianName: comboBoxGuardian.SelectedValue.ToString(),
-                    equipmentInventoryNumber: (int)comboBoxEquipment.SelectedValue
+                    guardianName: comboBoxGuardian.SelectedValue.ToString()
+                // Убран параметр equipmentInventoryNumber
                 );
 
                 LoadStudentsData();
@@ -150,7 +142,7 @@ namespace Pansionat
             }
             catch (SqlException ex) when (ex.Number == 547)
             {
-                MessageBox.Show("Ошибка: Указан несуществующий диагноз, опекун или оборудование");
+                MessageBox.Show("Ошибка: Указан несуществующий диагноз или опекун");
             }
             catch (Exception ex)
             {
@@ -166,7 +158,7 @@ namespace Pansionat
             comboBoxGender.SelectedIndex = -1;
             comboBoxDiagnosis.SelectedIndex = -1;
             comboBoxGuardian.SelectedIndex = -1;
-            comboBoxEquipment.SelectedIndex = -1;
+            // Убран сброс comboBoxEquipment
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -191,7 +183,7 @@ namespace Pansionat
                 // Устанавливаем значения ComboBox
                 string diagnosisName = selectedRow.Cells["Основной_диагноз"].Value?.ToString();
                 string guardianName = selectedRow.Cells["ФИО_опекуна"].Value?.ToString();
-                string equipmentName = selectedRow.Cells["Мед_оборудование"].Value?.ToString();
+                // Убрано оборудование
 
                 // Находим соответствующие значения в ComboBox
                 if (!string.IsNullOrEmpty(diagnosisName))
@@ -216,18 +208,7 @@ namespace Pansionat
                     comboBoxGuardian.SelectedIndex = -1;
                 }
 
-                if (!string.IsNullOrEmpty(equipmentName))
-                {
-                    var equipmentRow = equipmentData.Select($"Название = '{equipmentName.Replace("'", "''")}'").FirstOrDefault();
-                    if (equipmentRow != null)
-                        comboBoxEquipment.SelectedValue = equipmentRow["Инвентарный_номер_оборудования"];
-                    else
-                        comboBoxEquipment.SelectedIndex = -1;
-                }
-                else
-                {
-                    comboBoxEquipment.SelectedIndex = -1;
-                }
+                // Убрано оборудование
 
                 // Переключаемся в режим редактирования
                 buttonAdd.Enabled = false;
@@ -281,11 +262,7 @@ namespace Pansionat
                     return;
                 }
 
-                if (comboBoxEquipment.SelectedValue == null)
-                {
-                    MessageBox.Show("Выберите мед оборудование!");
-                    return;
-                }
+                // Убрана проверка оборудования
 
                 // Получаем оригинальный номер из выбранной строки
                 DataGridViewRow selectedRow = dataGridViewStudents.SelectedRows[0];
@@ -309,8 +286,8 @@ namespace Pansionat
                     birthDate: dateTimePickerBirthDate.Value,
                     gender: comboBoxGender.SelectedItem.ToString(),
                     diagnosisId: comboBoxDiagnosis.SelectedValue.ToString(), // Изменено на string
-                    guardianName: comboBoxGuardian.SelectedValue.ToString(),
-                    equipmentInventoryNumber: (int)comboBoxEquipment.SelectedValue
+                    guardianName: comboBoxGuardian.SelectedValue.ToString()
+                // Убран параметр equipmentInventoryNumber
                 );
 
                 LoadStudentsData();
@@ -507,7 +484,8 @@ namespace Pansionat
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
         private void progToolStripMenuItem_Click(object sender, EventArgs e) { }
-        private void информацияОбОбученииToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void информацияОбОбученииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             EducationalData sForm = new EducationalData();
             groupBox2.Visible = false;
             sForm.ShowDialog();
@@ -520,8 +498,6 @@ namespace Pansionat
             groupBox2.Visible = false;
             sForm.ShowDialog();
         }
-
-       
     }
 
     public class DatabaseHelper
@@ -529,21 +505,19 @@ namespace Pansionat
         private string connectionString = ConfigurationManager.ConnectionStrings["PansionatDBConnection"].ConnectionString;
 
         public void AddStudent(int number, string fio, DateTime birthDate, string gender,
-                         string diagnosisId, string guardianName, int equipmentInventoryNumber) // Изменено на string diagnosisId
+                         string diagnosisId, string guardianName) 
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 SqlTransaction transaction = connection.BeginTransaction();
-
                 try
                 {
-                    // 1. Добавляем воспитанника
+
                     string query = @"
                     INSERT INTO Воспитанник 
                         (Номер_личного_дела_воспитанника, ФИО, Дата_рождения, Пол, Основной_диагноз) 
-                    VALUES 
-                        (@Numb, @FIO, @BirthDate, @Gender, 
+                    VALUES (@Numb, @FIO, @BirthDate, @Gender, 
                          (SELECT Название FROM Диагноз WHERE Код_заболевания = @DiagnosisId))";
 
                     SqlCommand cmd = new SqlCommand(query, connection, transaction);
@@ -551,42 +525,25 @@ namespace Pansionat
                     cmd.Parameters.AddWithValue("@FIO", fio);
                     cmd.Parameters.AddWithValue("@BirthDate", birthDate);
                     cmd.Parameters.AddWithValue("@Gender", gender);
-                    cmd.Parameters.AddWithValue("@DiagnosisId", diagnosisId); // Теперь string
                     cmd.ExecuteNonQuery();
 
-                    // 2. Добавляем связь с диагнозом
                     query = @"
-                    INSERT INTO Диагноз_воспитанника 
-                        (Код_заболевания, Номер_личного_дела_воспитанника) 
-                    VALUES 
-                        (@DiagnosisId, @Numb)";
+                    INSERT INTO Диагноз_воспитанника (Код_заболевания, Номер_личного_дела_воспитанника) 
+                    VALUES (@DiagnosisId, @Numb)";
 
                     cmd = new SqlCommand(query, connection, transaction);
-                    cmd.Parameters.AddWithValue("@DiagnosisId", diagnosisId); // Теперь string
+                    cmd.Parameters.AddWithValue("@DiagnosisId", diagnosisId); 
                     cmd.Parameters.AddWithValue("@Numb", number);
                     cmd.ExecuteNonQuery();
 
-                    // 3. Добавляем связь с опекуном
                     query = @"
                     INSERT INTO Опекун_воспитанника 
                         (ФИО_опекуна, Номер_личного_дела_воспитанника) 
-                    VALUES 
-                        (@GuardianName, @Numb)";
+                    VALUES (@GuardianName, @Numb)";
 
                     cmd = new SqlCommand(query, connection, transaction);
                     cmd.Parameters.AddWithValue("@GuardianName", guardianName);
                     cmd.Parameters.AddWithValue("@Numb", number);
-                    cmd.ExecuteNonQuery();
-
-                    // 4. Обновляем мед оборудование
-                    query = @"
-                    UPDATE Мед_оборудование 
-                    SET Номер_личного_дела_воспитанника = @Numb
-                    WHERE Инвентарный_номер_оборудования = @EquipmentInventoryNumber";
-
-                    cmd = new SqlCommand(query, connection, transaction);
-                    cmd.Parameters.AddWithValue("@Numb", number);
-                    cmd.Parameters.AddWithValue("@EquipmentInventoryNumber", equipmentInventoryNumber);
                     cmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -611,11 +568,11 @@ namespace Pansionat
                     в.Дата_рождения,
                     в.Пол,
                     в.Основной_диагноз,
-                    ов.ФИО_опекуна,
-                    м.Название AS Мед_оборудование
+                    ов.ФИО_опекуна
+                    -- Убрано мед оборудование
                 FROM Воспитанник в
-                LEFT JOIN Опекун_воспитанника ов ON в.Номер_личного_дела_воспитанника = ов.Номер_личного_дела_воспитанника
-                LEFT JOIN Мед_оборудование м ON в.Номер_личного_дела_воспитанника = м.Номер_личного_дела_воспитанника";
+                LEFT JOIN Опекун_воспитанника ов ON в.Номер_личного_дела_воспитанника = ов.Номер_личного_дела_воспитанника";
+                // Убрано LEFT JOIN с Мед_оборудование
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -650,18 +607,7 @@ namespace Pansionat
             return dt;
         }
 
-        public DataTable LoadMedicalEquipment()
-        {
-            DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT Инвентарный_номер_оборудования, Название FROM Мед_оборудование";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-            }
-            return dt;
-        }
+        // Убран метод LoadMedicalEquipment
 
         public void DeleteStudent(int number)
         {
@@ -712,7 +658,7 @@ namespace Pansionat
         }
 
         public void UpdateStudent(int originalNumber, int newNumber, string fio, DateTime birthDate,
-                        string gender, string diagnosisId, string guardianName, int equipmentInventoryNumber) // Изменено на string diagnosisId
+                        string gender, string diagnosisId, string guardianName) // Убран параметр equipmentInventoryNumber
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -786,27 +732,7 @@ namespace Pansionat
                         cmd.ExecuteNonQuery();
                     }
 
-                    // 4. Обновляем мед оборудование
-                    // Сначала освобождаем текущее оборудование
-                    query = @"
-                    UPDATE Мед_оборудование 
-                    SET Номер_личного_дела_воспитанника = NULL 
-                    WHERE Номер_личного_дела_воспитанника = @NewNumber";
-
-                    cmd = new SqlCommand(query, connection, transaction);
-                    cmd.Parameters.AddWithValue("@NewNumber", newNumber);
-                    cmd.ExecuteNonQuery();
-
-                    // Затем привязываем новое оборудование
-                    query = @"
-                    UPDATE Мед_оборудование 
-                    SET Номер_личного_дела_воспитанника = @NewNumber
-                    WHERE Инвентарный_номер_оборудования = @EquipmentInventoryNumber";
-
-                    cmd = new SqlCommand(query, connection, transaction);
-                    cmd.Parameters.AddWithValue("@NewNumber", newNumber);
-                    cmd.Parameters.AddWithValue("@EquipmentInventoryNumber", equipmentInventoryNumber);
-                    cmd.ExecuteNonQuery();
+                    // Убрано обновление мед оборудования
 
                     transaction.Commit();
                 }

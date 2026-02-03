@@ -26,6 +26,7 @@ namespace Pasionat
         private int _selectedStudentId = -1;
         private string _selectedStudentName = "";
 
+
         public EducationalData()
         {
             InitializeComponent();
@@ -136,8 +137,6 @@ namespace Pasionat
                 if (studentsData != null && studentsData.Rows.Count > 0)
                 {
                     Debug.WriteLine($"Загружено студентов: {studentsData.Rows.Count}");
-
-                    // Очищаем и перезагружаем комбобокс
                     comboBoxStudent.BeginUpdate();
                     comboBoxStudent.DataSource = null;
                     comboBoxStudent.Items.Clear();
@@ -150,7 +149,6 @@ namespace Pasionat
 
                     Debug.WriteLine($"ComboBoxStudent items: {comboBoxStudent.Items.Count}");
 
-                    // Проверяем привязку данных
                     if (comboBoxStudent.Items.Count > 0)
                     {
                         Debug.WriteLine("Данные студентов успешно загружены в комбобокс");
@@ -162,8 +160,7 @@ namespace Pasionat
                     comboBoxStudent.DataSource = null;
                     comboBoxStudent.Items.Clear();
                     comboBoxStudent.Text = "Нет данных о воспитанниках";
-                    MessageBox.Show("В базе данных нет информации о воспитанниках.", "Внимание",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("В базе данных нет информации о воспитанниках.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -172,8 +169,7 @@ namespace Pasionat
                 comboBoxStudent.DataSource = null;
                 comboBoxStudent.Items.Clear();
                 comboBoxStudent.Text = "Ошибка загрузки";
-                MessageBox.Show($"Ошибка загрузки списка воспитанников: {ex.Message}", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка загрузки списка воспитанников: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -272,13 +268,19 @@ namespace Pasionat
                 comboBoxYear.BeginUpdate();
                 comboBoxYear.Items.Clear();
 
+                comboBoxYear2.BeginUpdate();
+                comboBoxYear2.Items.Clear();
+
                 int currentYear = DateTime.Now.Year;
                 for (int year = currentYear - 5; year <= currentYear + 5; year++)
                 {
                     comboBoxYear.Items.Add(year);
+                    comboBoxYear2.Items.Add(year);
                 }
                 comboBoxYear.SelectedIndex = -1;
                 comboBoxYear.EndUpdate();
+                comboBoxYear2.SelectedIndex = -1;
+                comboBoxYear2.EndUpdate();
 
                 Debug.WriteLine($"Добавлено годов в комбобокс: {comboBoxYear.Items.Count}");
             }
@@ -579,57 +581,57 @@ namespace Pasionat
             }
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string searchText = textBoxSearch.Text.Trim();
-                Debug.WriteLine($"Поиск по тексту: '{searchText}'");
+        /* private void buttonSearch_Click(object sender, EventArgs e)
+         {
+             try
+             {
+                 string searchText = textBoxSearch.Text.Trim();
+                 Debug.WriteLine($"Поиск по тексту: '{searchText}'");
 
-                if (string.IsNullOrEmpty(searchText))
-                {
-                    Debug.WriteLine("Текст поиска пуст - загрузка всех данных");
-                    LoadEducationData();
-                    return;
-                }
+                 if (string.IsNullOrEmpty(searchText))
+                 {
+                     Debug.WriteLine("Текст поиска пуст - загрузка всех данных");
+                     LoadEducationData();
+                     return;
+                 }
 
-                if (educationData == null)
-                {
-                    MessageBox.Show("Нет данных для поиска", "Внимание",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                 if (educationData == null)
+                 {
+                     MessageBox.Show("Нет данных для поиска", "Внимание",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     return;
+                 }
 
-                DataTable filteredData = educationData.Clone();
+                 DataTable filteredData = educationData.Clone();
 
-                var filteredRows = educationData.AsEnumerable()
-                    .Where(row =>
-                        (row.Field<string>("ФИО_воспитанника")?.ToLower().Contains(searchText.ToLower()) ?? false) ||
-                        (row.Field<string>("ФИО_педагога")?.ToLower().Contains(searchText.ToLower()) ?? false) ||
-                        (row.Field<string>("Название_программы")?.ToLower().Contains(searchText.ToLower()) ?? false) ||
-                        (row.Field<short>("Год_обучения").ToString().Contains(searchText)));
+                 var filteredRows = educationData.AsEnumerable()
+                     .Where(row =>
+                         (row.Field<string>("ФИО_воспитанника")?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                         (row.Field<string>("ФИО_педагога")?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                         (row.Field<string>("Название_программы")?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                         (row.Field<short>("Год_обучения").ToString().Contains(searchText)));
 
-                foreach (var row in filteredRows)
-                {
-                    filteredData.ImportRow(row);
-                }
+                 foreach (var row in filteredRows)
+                 {
+                     filteredData.ImportRow(row);
+                 }
 
-                dataGridViewEducation.DataSource = filteredData;
-                Debug.WriteLine($"Найдено записей: {filteredData.Rows.Count}");
+                 dataGridViewEducation.DataSource = filteredData;
+                 Debug.WriteLine($"Найдено записей: {filteredData.Rows.Count}");
 
-                if (filteredData.Rows.Count == 0)
-                {
-                    MessageBox.Show("Записи не найдены", "Результат поиска",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"ОШИБКА поиска: {ex.Message}");
-                MessageBox.Show("Ошибка поиска: " + ex.Message, "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+                 if (filteredData.Rows.Count == 0)
+                 {
+                     MessageBox.Show("Записи не найдены", "Результат поиска",
+                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 }
+             }
+             catch (Exception ex)
+             {
+                 Debug.WriteLine($"ОШИБКА поиска: {ex.Message}");
+                 MessageBox.Show("Ошибка поиска: " + ex.Message, "Ошибка",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }*/
         private void buttonPick_Click(object sender, EventArgs e)
         {
             if (dataGridViewEducation.SelectedRows.Count == 0)
@@ -648,6 +650,7 @@ namespace Pasionat
 
                 // Обновляем метку на второй вкладке
                 labelFIO.Text = _selectedStudentName;
+                labelFIO1.Text = _selectedStudentName;
 
                 // Показываем информацию о выборе
                 string programName = selectedRow.Cells["Название_программы"].Value?.ToString() ?? "";
@@ -815,7 +818,7 @@ namespace Pasionat
             comboBoxTeacher.SelectedIndex = -1;
             comboBoxProgram.SelectedIndex = -1;
             comboBoxYear.SelectedIndex = -1;
-            textBoxSearch.Clear();
+            //textBoxSearch.Clear();
 
             // Сбрасываем состояние кнопок
             buttonAdd.Enabled = true;
@@ -838,6 +841,7 @@ namespace Pasionat
                 dataGridViewEducation.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
+
     }
 
     public class EducationDatabaseHelper
